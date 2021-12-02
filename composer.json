@@ -1,35 +1,40 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "spatie/github-actions-watcher",
+    "description": "A CLI tool to see the status of your GitHub Actions workflows in real time",
     "keywords": [
-        ":vendor_name",
-        ":package_slug"
+        "spatie",
+        "github-actions-watcher"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/spatie/github-actions-watcher",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Freek Van der Herten",
+            "email": "freek@spatie.be",
             "role": "Developer"
         }
     ],
     "require": {
-        "php": "^8.0"
+        "php": "^8.0",
+        "guzzlehttp/guzzle": "^7.4",
+        "illuminate/http": "^8.74",
+        "illuminate/view": "^8.74",
+        "laravel-zero/framework": "^8.8",
+        "nunomaduro/termwind": "^1.0"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^3.0",
+        "mockery/mockery": "^1.4.3",
         "pestphp/pest": "^1.20",
-        "spatie/ray": "^1.28"
+        "spatie/ray": "^1.32"
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src"
+            "App\\": "app/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests"
+            "Tests\\": "tests/"
         }
     },
     "scripts": {
@@ -41,5 +46,6 @@
         "sort-packages": true
     },
     "minimum-stability": "dev",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "bin": ["application"]
 }

@@ -1,8 +1,8 @@
-# :package_description
+# A CLI tool to see the status of your GitHub Actions workflows in real time
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/:vendor_slug/:package_slug.svg?style=flat-square)](https://packagist.org/packages/:vendor_slug/:package_slug)
-[![Tests](https://github.com/:vendor_slug/:package_slug/actions/workflows/run-tests.yml/badge.svg?branch=main)](https://github.com/:vendor_slug/:package_slug/actions/workflows/run-tests.yml)
-[![Total Downloads](https://img.shields.io/packagist/dt/:vendor_slug/:package_slug.svg?style=flat-square)](https://packagist.org/packages/:vendor_slug/:package_slug)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/github-actions-watcher.svg?style=flat-square)](https://packagist.org/packages/spatie/github-actions-watcher)
+[![Tests](https://github.com/spatie/github-actions-watcher/actions/workflows/run-tests.yml/badge.svg?branch=main)](https://github.com/spatie/github-actions-watcher/actions/workflows/run-tests.yml)
+[![Total Downloads](https://img.shields.io/packagist/dt/spatie/github-actions-watcher.svg?style=flat-square)](https://packagist.org/packages/spatie/github-actions-watcher)
 
 ---
 This package can be used as to scaffold a framework agnostic package. Follow these steps to get started:
@@ -17,7 +17,7 @@ This is where your description should go. Try and limit it to a paragraph or two
 
 ## Support us
 
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/:package_name.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/:package_name)
+[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/github-actions-watcher.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/github-actions-watcher)
 
 We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
 
@@ -28,14 +28,14 @@ We highly appreciate you sending us a postcard from your hometown, mentioning wh
 You can install the package via composer:
 
 ```bash
-composer require :vendor_slug/:package_slug
+composer require spatie/github-actions-watcher
 ```
 
 ## Usage
 
 ```php
-$skeleton = new VendorName\Skeleton();
-echo $skeleton->echoPhrase('Hello, VendorName!');
+$skeleton = new Spatie\GithubActionsWatcher();
+echo $skeleton->echoPhrase('Hello, Spatie!');
 ```
 
 ## Testing
@@ -58,7 +58,7 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
-- [:author_name](https://github.com/:author_username)
+- [Freek Van der Herten](https://github.com/freekmurze)
 - [All Contributors](../../contributors)
 
 ## License
