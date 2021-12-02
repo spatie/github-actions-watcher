@@ -15,12 +15,14 @@
         }
     ],
     "require": {
-        "php": "^8.0",
+        "php": "^8.1",
         "guzzlehttp/guzzle": "^7.4",
         "illuminate/http": "^8.74",
         "illuminate/view": "^8.74",
         "laravel-zero/framework": "^8.8",
-        "nunomaduro/termwind": "^1.0"
+        "nunomaduro/larastan": "^1.0",
+        "nunomaduro/termwind": "^1.0",
+        "symfony/process": "^5.0"
     },
     "require-dev": {
         "mockery/mockery": "^1.4.3",
@@ -38,9 +40,9 @@
         }
     },
     "scripts": {
+        "analyse": "vendor/bin/phpstan analyse",
         "test": "vendor/bin/pest",
-        "test-coverage": "vendor/bin/pest --coverage",
-        "format": "vendor/bin/php-cs-fixer fix --allow-risky=yes"
+        "test-coverage": "vendor/bin/pest --coverage"
     },
     "config": {
         "sort-packages": true

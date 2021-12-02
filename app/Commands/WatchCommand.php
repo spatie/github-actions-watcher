@@ -2,8 +2,10 @@
 
 namespace App\Commands;
 
-use App\Services\GitHub\GitHub;
+use App\Support\GitHub\GitHub;
+use App\Support\LocalGitRepo;
 use LaravelZero\Framework\Commands\Command;
+use League\Flysystem\Adapter\Local;
 use function Termwind\render;
 
 class WatchCommand extends Command
@@ -14,7 +16,11 @@ class WatchCommand extends Command
 
     public function handle(GitHub $gitHub)
     {
-        $runs = $gitHub->getLatestWorkflowRuns('spatie/ray');
+        $localGitRepo = new LocalGitRepo(base_path());
+
+        $vendorAndRepo = $localGitRepo->getVendorAndRepo();
+
+        $runs = $gitHub->getLatestWorkflowRuns($vendorAndRepo);
 
         render(view('runs', compact('runs')));
     }

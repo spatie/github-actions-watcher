@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Services\GitHub;
+namespace App\Support\GitHub;
 
-use App\Services\Entities\WorkflowRun;
+use App\Support\GitHub\Entities\WorkflowRun;
 use Illuminate\Support\Collection;
 
 use Illuminate\Http\Client\PendingRequest;

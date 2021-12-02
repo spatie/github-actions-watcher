@@ -1,7 +1,7 @@
 <div class="m-1">
     <ul>
     @foreach($runs as $run)
-        <li>{{ $run->name }}: {{ $run->status }}</li>
+        <li><a href="{{ $run->html_url }}">{{ $run->name }}</a>: {{ $run->status }}</li>
     @endforeach
     </ul>
 </div>
