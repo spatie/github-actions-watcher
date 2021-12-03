@@ -2,7 +2,7 @@
 
 use App\Support\ConfigRepository;
 
-it('can store and forget a token', function() {
+it('can store and forget a token', function () {
     $config = new ConfigRepository();
 
     $config->setAccessToken('abc123');
