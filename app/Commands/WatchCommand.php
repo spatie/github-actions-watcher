@@ -17,10 +17,21 @@ class WatchCommand extends Command
 
     public function handle(GitHub $gitHub): int
     {
-        $this
-            ->clearScreen()
-            ->renderTitle();
+        $vendorAndRepo = $this->getVendorAndRepo();
 
+        do {
+            $hasRunningWorkflows = $this->displayWorkflows($gitHub, $vendorAndRepo);
+
+            if ($hasRunningWorkflows) {
+                sleep(2);
+            }
+        } while ($hasRunningWorkflows);
+
+        return static::SUCCESS;
+    }
+
+    protected function getVendorAndRepo(): string
+    {
         $localGitRepo = new LocalGitRepo(base_path());
 
         try {
@@ -28,26 +39,25 @@ class WatchCommand extends Command
         } catch (Exception $exception) {
             $this->renderError($exception->getMessage());
 
-            return static::FAILURE;
+            exit(static::FAILURE);
         }
 
-        do {
-            $runs = $gitHub->getLatestWorkflowRuns($vendorAndRepo);
+        return $vendorAndRepo;
+    }
 
-            $this
-                ->clearScreen()
-                ->renderTitle();
+    protected function displayWorkflows(GitHub $gitHub, string $vendorAndRepo): bool
+    {
+        $runs = $gitHub->getLatestWorkflowRuns($vendorAndRepo);
 
-            render(view('runs', compact('runs')));
+        $this
+            ->clearScreen()
+            ->renderTitle();
 
-            $activeRuns = $runs->contains(fn(WorkflowRun $workflowRun) => $workflowRun->didNotComplete());
+        render(view('runs', compact('runs')));
 
-            if ($activeRuns) {
-                sleep(2);
-            }
-        } while ($activeRuns);
+        $hasRunningWorkflows = $runs->contains(fn(WorkflowRun $workflowRun) => $workflowRun->didNotComplete());
 
-        return static::SUCCESS;
+        return ! $hasRunningWorkflows;
     }
 
     public function clearScreen(): self
@@ -70,5 +80,7 @@ class WatchCommand extends Command
 
         return $this;
     }
+
+
 
 }
