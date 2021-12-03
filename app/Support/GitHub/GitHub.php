@@ -18,7 +18,7 @@ class GitHub
         $this->gitHub->acceptJson();
 
         if ($accessToken = $config?->accessToken) {
-            //$this->addAuthenticationHeader($accessToken);
+            $this->gitHub->withToken($accessToken);
         }
     }
 
@@ -96,15 +96,10 @@ class GitHub
      */
     public function getAuthorizedUser(string $accessToken = null): array
     {
-        $this->addAuthenticationHeader($accessToken);
-
-        return $this->gitHub->withToken($accessToken)->get('https://api.github.com/user')->json();
-    }
-
-    protected function addAuthenticationHeader(string $accessToken): self
-    {
-        $this->gitHub->withHeaders(['Authorization' => "token {$accessToken}"]);
-
-        return $this;
+        return $this
+            ->gitHub
+            ->withToken($accessToken)
+            ->get('https://api.github.com/user')
+            ->json();
     }
 }

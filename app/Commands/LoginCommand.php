@@ -15,7 +15,9 @@ class LoginCommand extends Command
     public function handle()
     {
         if ($username = $this->config->gitHubUsername) {
-            $this->error("You are already logged in as {$username}. Run `actions-watcher logout` to logout first.");
+            $this->showError("You are already logged in as {$username}. Run `actions-watcher logout` to logout first.");
+
+            return static::FAILURE;
         }
 
         $verificationData =  $this->gitHub->startUserVerification();
@@ -33,13 +35,17 @@ class LoginCommand extends Command
             $accessToken = $this->checkResponse($verificationData['device_code']);
         } while(! $accessToken);
 
-        $this->info('got token' . $accessToken);
-        $user = $this->gitHub->getAuthorizedUser($accessToken);
+        $gitHubUser = $this->gitHub->getAuthorizedUser($accessToken);
 
-        $this->config->setAccessToken($accessToken, $user['login']);
+        $this->config
+            ->setAccessToken($accessToken)
+            ->setGitHubUsername($gitHubUser['login']);
 
+        $this
+            ->clearScreen()
+            ->showSuccess("You have been successfully logged in as {$gitHubUser['login']}");
 
-        $this->config->setAccessToken($accessToken);
+        return static::SUCCESS;
     }
 
     protected function checkResponse(string $deviceCode): ?string

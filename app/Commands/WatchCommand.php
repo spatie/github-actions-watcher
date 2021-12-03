@@ -38,7 +38,7 @@ class WatchCommand extends Command
         try {
             $vendorAndRepo = $localGitRepo->getVendorAndRepo();
         } catch (Exception $exception) {
-            $this->renderError($exception->getMessage());
+            $this->showError($exception->getMessage());
 
             exit(static::FAILURE);
         }
@@ -57,7 +57,7 @@ class WatchCommand extends Command
         try {
             $vendorAndRepo = $localGitRepo->getCurrentBranch();
         } catch (Exception $exception) {
-            $this->renderError($exception->getMessage());
+            $this->showError($exception->getMessage());
 
             exit(static::FAILURE);
         }

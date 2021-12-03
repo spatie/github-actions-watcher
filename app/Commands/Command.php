@@ -24,16 +24,24 @@ abstract class Command extends LaravelZeroCommand
         return $this;
     }
 
-    public function renderError(string $message): self
+    public function showSuccess(string $message): self
     {
-        render("<p class='m-1 bg-red-800 text-white'>{$message}</p>");
-
-        return $this;
+        return $this->showMessage($message, 'bg-green-800');
     }
 
-    public function message(string $message): self
+    public function showError(string $message): self
     {
-        render("<p class='m-1 bg-green-800 text-white'>{$message}</p>");
+        return $this->showMessage($message, 'bg-red-800');
+    }
+
+    public function showMessage(string $message, string $backgroundColor = 'bg-green-800'): self
+    {
+        $view = view('message', [
+            'message' => $message,
+            'backgroundColor' => $backgroundColor,
+        ]);
+
+        render($view);
 
         return $this;
     }
