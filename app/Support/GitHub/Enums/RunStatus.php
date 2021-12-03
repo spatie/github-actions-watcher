@@ -4,17 +4,17 @@ namespace App\Support\GitHub\Enums;
 
 enum RunStatus: string
 {
-    case queued = 'queued';
-    case inProgress = 'in_progress';
-    case completed = 'completed';
+    case Queued = 'queued';
+    case InProgress = 'in_progress';
+    case Completed = 'completed';
 
     public function color(): string
     {
         return match($this)
         {
-            self::queued => 'bg-grey-100',
-            self::inProgress => 'bg-orange-100',
-            self::completed => 'bg-red-100',
+            self::Queued => 'bg-grey-100',
+            self::InProgress => 'bg-orange-100',
+            self::Completed => 'bg-red-100',
         };
     }
 }

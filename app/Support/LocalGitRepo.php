@@ -24,6 +24,23 @@ class LocalGitRepo
         return $this->extractVendorAndRepo($gitUrl);
     }
 
+    public function getCurrentBranch(): string
+    {
+        $gitPath = $this->findGitBinaryPath();
+
+        $command = "{$gitPath} rev-parse --abbrev-ref HEAD";
+
+        $process = PRocess::fromShellCommandline($command, $this->directory);
+
+        $process->run();
+
+        if (!$process->isSuccessful()) {
+            throw NotExecutingInLocalGitRepo::make();
+        }
+
+        return trim($process->getOutput());
+    }
+
     protected function findGitBinaryPath(): string
     {
         $executableFinder = new ExecutableFinder();

@@ -6,32 +6,33 @@ use App\Support\GitHub\Entities\WorkflowRun;
 use App\Support\GitHub\GitHub;
 use App\Support\LocalGitRepo;
 use Exception;
-use LaravelZero\Framework\Commands\Command;
 use function Termwind\render;
 
 class WatchCommand extends Command
 {
-    protected $signature = 'watch';
+    protected $signature = 'watch {--R|repo=} {--B|branch=} {--single-pass}';
 
     protected $description = 'Watch the GitHub actions of a repo';
 
-    public function handle(GitHub $gitHub): int
+    public function handle(): int
     {
         $vendorAndRepo = $this->getVendorAndRepo();
 
-        do {
-            $hasRunningWorkflows = $this->displayWorkflows($gitHub, $vendorAndRepo);
+        $branch = $this->getBranch();
 
-            if ($hasRunningWorkflows) {
-                sleep(2);
-            }
-        } while ($hasRunningWorkflows);
+        do {
+            $hasRunningWorkflows = $this->displayWorkflows($this->gitHub, $vendorAndRepo, $branch);
+        } while ($this->shouldContinueWatching($hasRunningWorkflows));
 
         return static::SUCCESS;
     }
 
     protected function getVendorAndRepo(): string
     {
+        if ($vendorAndRepo = $this->option('repo')) {
+            return $vendorAndRepo;
+        }
+
         $localGitRepo = new LocalGitRepo(base_path());
 
         try {
@@ -45,42 +46,53 @@ class WatchCommand extends Command
         return $vendorAndRepo;
     }
 
-    protected function displayWorkflows(GitHub $gitHub, string $vendorAndRepo): bool
+    protected function getBranch(): string
     {
-        $runs = $gitHub->getLatestWorkflowRuns($vendorAndRepo);
+        if ($branch = $this->option('branch')) {
+            return $branch;
+        }
 
-        $this
-            ->clearScreen()
-            ->renderTitle();
+        $localGitRepo = new LocalGitRepo(base_path());
 
-        render(view('runs', compact('runs')));
+        try {
+            $vendorAndRepo = $localGitRepo->getCurrentBranch();
+        } catch (Exception $exception) {
+            $this->renderError($exception->getMessage());
+
+            exit(static::FAILURE);
+        }
+
+        return $vendorAndRepo;
+    }
+
+    protected function displayWorkflows(GitHub $gitHub, string $vendorAndRepo, string $branch): bool
+    {
+        $runs = $gitHub->getLatestWorkflowRuns($vendorAndRepo, $branch);
+
+        $this->clearScreen();
+
+        $view = view('runs', compact('runs', 'vendorAndRepo', 'branch'));
+        render($view);
 
         $hasRunningWorkflows = $runs->contains(fn(WorkflowRun $workflowRun) => $workflowRun->didNotComplete());
 
         return ! $hasRunningWorkflows;
     }
 
-    public function clearScreen(): self
+    private function shouldContinueWatching(bool $hasRunningWorkflows): bool
     {
-        $this->output->write(sprintf("\033\143"));
+        if (! $hasRunningWorkflows) {
+            return false;
+        }
 
-        return $this;
+        if ($this->option('single-pass')) {
+            return false;
+        }
+
+        sleep(5);
+
+        return true;
     }
-
-    protected function renderTitle(): self
-    {
-        render("<p class='m-1 bg-green-800 text-white p-1'>GitHub Actions Watcher by Spatie</p>");
-
-        return $this;
-    }
-
-    public function renderError(string $message): self
-    {
-        render("<p class='m-1 bg-red-800 text-white'>{$message}</p>");
-
-        return $this;
-    }
-
 
 
 }
