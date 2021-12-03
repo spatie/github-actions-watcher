@@ -40,8 +40,6 @@ class WatchCommand extends Command
 
             render(view('runs', compact('runs')));
 
-
-
             $activeRuns = $runs->contains(fn(WorkflowRun $workflowRun) => $workflowRun->didNotComplete());
 
             if ($activeRuns) {
