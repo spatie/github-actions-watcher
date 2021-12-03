@@ -49,7 +49,7 @@ class GitHub
      * @param string $vendorAndRepo
      * @param string $branch
      *
-     * @return Collection<WorkflowRun>
+     * @return WorkflowRunCollection<int, WorkflowRun>
      */
     public function getLatestWorkflowRuns(string $vendorAndRepo, string $branch): WorkflowRunCollection
     {
@@ -96,7 +96,7 @@ class GitHub
     }
 
     /**
-     * @param string|null $accessToken
+     * @param string $accessToken
      *
      * @return array{login: string}
      */

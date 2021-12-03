@@ -14,6 +14,9 @@ use Illuminate\Support\Arr;
  */
 class WorkflowRun
 {
+    /**
+     * @param array<int, string> $properties
+     */
     public function __construct(public array $properties)
     {
     }
