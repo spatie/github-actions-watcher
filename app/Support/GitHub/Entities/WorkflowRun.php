@@ -32,6 +32,22 @@ class WorkflowRun
     public function conclusion(): RunConclusion
     {
         return RunConclusion::from($this->conclusion);
+    }
 
+    public function getListStatus(): RunStatus|RunConclusion
+    {
+        return $this->status() === RunStatus::completed
+            ? $this->conclusion()
+            : $this->status();
+    }
+
+    public function didComplete(): bool
+    {
+        return $this->status() === RunStatus::completed;
+    }
+
+    public function didNotComplete(): bool
+    {
+        return ! $this->didComplete();
     }
 }

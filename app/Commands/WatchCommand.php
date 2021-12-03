@@ -2,6 +2,7 @@
 
 namespace App\Commands;
 
+use App\Support\GitHub\Entities\WorkflowRun;
 use App\Support\GitHub\GitHub;
 use App\Support\LocalGitRepo;
 use Exception;
@@ -30,23 +31,26 @@ class WatchCommand extends Command
             return static::FAILURE;
         }
 
-        $runs = $gitHub->getLatestWorkflowRuns($vendorAndRepo);
+        do {
+            $runs = $gitHub->getLatestWorkflowRuns($vendorAndRepo);
 
-        foreach(range(1, 5) as $i) {
             $this
                 ->clearScreen()
-                ->renderTitle()
-                ->renderError("This is pass {$i}");
+                ->renderTitle();
 
             render(view('runs', compact('runs')));
 
-            sleep(1);
-        }
+
+
+            $activeRuns = $runs->contains(fn(WorkflowRun $workflowRun) => $workflowRun->didNotComplete());
+
+            if ($activeRuns) {
+                sleep(2);
+            }
+        } while ($activeRuns);
 
         return static::SUCCESS;
     }
-
-
 
     public function clearScreen(): self
     {
