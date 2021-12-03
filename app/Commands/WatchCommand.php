@@ -44,7 +44,7 @@ class WatchCommand extends Command
     protected function getVendorAndRepo(): string
     {
         if ($vendorAndRepo = $this->option('repo')) {
-            return $vendorAndRepo;
+            return (string)$vendorAndRepo;
         }
 
         $localGitRepo = new LocalGitRepo(base_path());
@@ -63,7 +63,7 @@ class WatchCommand extends Command
     protected function getBranch(): string
     {
         if ($branch = $this->option('branch')) {
-            return $branch;
+            return (string)$branch;
         }
 
         $localGitRepo = new LocalGitRepo(base_path());

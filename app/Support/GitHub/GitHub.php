@@ -18,15 +18,16 @@ class GitHub
     {
         $this->gitHub->acceptJson();
 
-        if ($accessToken = $config?->accessToken) {
+        if ($accessToken = $config->accessToken) {
             $this->gitHub->withToken($accessToken);
         }
     }
 
     /**
      * @param string $vendorAndRepo
+     * @param string $branch
      *
-     * @return Collection<WorkflowRun>
+     * @return WorkflowRunCollection<int, WorkflowRun>
      */
     public function getWorkflowRuns(string $vendorAndRepo, string $branch): WorkflowRunCollection
     {
@@ -63,6 +64,7 @@ class GitHub
             return;
         }
 
+        /** @phpstan-ignore-next-line  */
         if ($response->getReasonPhrase() === 'rate limit exceeded') {
             throw RateLimitExceeded::make($response);
         }
@@ -98,7 +100,7 @@ class GitHub
      *
      * @return array{login: string}
      */
-    public function getAuthorizedUser(string $accessToken = null): array
+    public function getAuthorizedUser(string $accessToken): array
     {
         return $this
             ->gitHub

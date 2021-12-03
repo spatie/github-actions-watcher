@@ -10,7 +10,7 @@ class LoginCommand extends Command
 
     protected $description = 'Login to GitHub';
 
-    public function handle()
+    public function handle(): int
     {
         if ($username = $this->config->gitHubUsername) {
             $this
@@ -56,9 +56,5 @@ class LoginCommand extends Command
         sleep(5);
 
         return $this->gitHub->getAccessToken($deviceCode);
-    }
-
-    protected function isValidToken(string $token): bool
-    {
     }
 }

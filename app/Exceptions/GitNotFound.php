@@ -8,6 +8,6 @@ class GitNotFound extends Exception
 {
     public static function make(): self
     {
-        return new static("Could not find the `git` binary.");
+        return new self("Could not find the `git` binary.");
     }
 }

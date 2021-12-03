@@ -8,6 +8,6 @@ class NotExecutingInLocalGitRepo extends Exception
 {
     public static function make(): self
     {
-        return new static("Make sure that you are executing this command in a git repo.");
+        return new self("Make sure that you are executing this command in a git repo.");
     }
 }

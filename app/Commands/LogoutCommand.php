@@ -8,7 +8,7 @@ class LogoutCommand extends Command
 
     protected $description = 'Logout form GitHub';
 
-    public function handle()
+    public function handle(): int
     {
         if (! $username = $this->config->gitHubUsername) {
             $this

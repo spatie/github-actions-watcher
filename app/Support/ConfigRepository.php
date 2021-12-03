@@ -33,7 +33,7 @@ class ConfigRepository
         return $this;
     }
 
-    public function __get(string $name)
+    public function __get(string $name): string
     {
         return $this->valuestore->get($name);
     }

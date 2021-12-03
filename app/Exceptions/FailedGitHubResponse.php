@@ -10,6 +10,6 @@ class FailedGitHubResponse extends \Exception
     {
         $exception = $response->toException();
 
-        return new static("GitHub didn't response successfully. Response:  {$exception->getMessage()}", previous: $exception);
+        return new self("GitHub didn't response successfully. Response:  {$exception->getMessage()}", previous: $exception);
     }
 }

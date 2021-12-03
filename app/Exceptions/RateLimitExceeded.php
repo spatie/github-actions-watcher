@@ -11,6 +11,6 @@ class RateLimitExceeded extends Exception
     {
         $exception = $response->toException();
 
-        return new static("GitHub's rate limit has been exceeded. Try authentication using `actions-watcher login` to get a higher rating limit.", previous: $exception);
+        return new self("GitHub's rate limit has been exceeded. Try authentication using `actions-watcher login` to get a higher rating limit.", previous: $exception);
     }
 }

@@ -48,7 +48,7 @@ class LocalGitRepo
         $gitPath = $executableFinder->find('git');
 
         if (! $gitPath) {
-            throw GitNotFound::make($this->directory);
+            throw GitNotFound::make();
         }
 
         return $gitPath;

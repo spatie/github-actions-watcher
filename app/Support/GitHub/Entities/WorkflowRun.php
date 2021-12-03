@@ -7,10 +7,10 @@ use App\Support\GitHub\Enums\RunStatus;
 use Illuminate\Support\Arr;
 
 /**
- * @property-read $name
- * @property-read $html_url
- * @property-read $status
- * @property-read $conclusion
+ * @property-read string $name
+ * @property-read string $html_url
+ * @property-read string $status
+ * @property-read string $conclusion
  */
 class WorkflowRun
 {

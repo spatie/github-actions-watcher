@@ -51,7 +51,7 @@ abstract class Command extends LaravelZeroCommand
             'backgroundColor' => $backgroundColor,
         ]);
 
-        render($view);
+        render((string)$view);
 
         return $this;
     }
