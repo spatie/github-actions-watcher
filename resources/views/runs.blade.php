@@ -11,7 +11,7 @@
 
     <ul>
         @foreach($runs as $run)
-            <li><a href="{{ $run->html_url }}">{{ $run->name }}</a>: {{ $run->status }}</li>
+            <li><a href="{{ $run->html_url }}">{{ $run->name }}</a>: ({{ $run->getListStatus()->humanRedableValue }})</li>
         @endforeach
     </ul>
 

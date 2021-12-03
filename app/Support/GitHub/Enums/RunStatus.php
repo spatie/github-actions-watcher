@@ -2,8 +2,12 @@
 
 namespace App\Support\GitHub\Enums;
 
+use App\Support\GitHub\Enums\Concerns\HasHumanReadableValue;
+
 enum RunStatus: string
 {
+    use HasHumanReadableValue;
+
     case Queued = 'queued';
     case InProgress = 'in_progress';
     case Completed = 'completed';

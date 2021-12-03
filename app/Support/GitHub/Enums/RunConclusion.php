@@ -2,8 +2,12 @@
 
 namespace App\Support\GitHub\Enums;
 
+use App\Support\GitHub\Enums\Concerns\HasHumanReadableValue;
+
 enum RunConclusion: string
 {
+    use HasHumanReadableValue;
+
     case ActionRequired = 'action_required';
     case Cancelled = 'cancelled';
     case Failure = 'failure';

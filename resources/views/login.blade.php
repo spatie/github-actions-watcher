@@ -1,4 +1,4 @@
-<div class="m-1">
+<div class="mx-4 mt-1">
     <div>By authenticating with GitHub, you can see workflows of private repos and enjoy higher rate
         limits.
     </div>

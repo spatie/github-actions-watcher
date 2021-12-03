@@ -12,17 +12,19 @@ class LoginCommand extends Command
 
     public function handle()
     {
-        $this->showHeader();
-
         if ($username = $this->config->gitHubUsername) {
-            $this->showError("You are already logged in as {$username}. Run `actions-watcher logout` to logout first.");
+            $this
+                ->showHeader()
+                ->showError("You are already logged in as {$username}. Run `actions-watcher logout` to logout first.");
 
             return static::FAILURE;
         }
 
         $verificationData =  $this->gitHub->startUserVerification();
 
-        $this->clearScreen();
+        $this
+            ->clearScreen()
+            ->showHeader();
 
         $view = view('login', [
             'verificationUrl' => $verificationData['verification_uri'],

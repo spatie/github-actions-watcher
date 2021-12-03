@@ -14,17 +14,19 @@ class LogoutCommand extends Command
 
     public function handle()
     {
-        $this->showHeader();
-
         if (! $username = $this->config->gitHubUsername) {
-            $this->showError("You were not logged in.");
+            $this
+                ->showHeader()
+                ->showError("Nobody was logged in.");
 
             return static::FAILURE;
         }
 
         $this->config->flush();
 
-        $this->showSuccess("{$username} have been logged out.");
+        $this
+            ->showHeader()
+            ->showSuccess("{$username} has been logged out.");
 
         return static::SUCCESS;
     }
