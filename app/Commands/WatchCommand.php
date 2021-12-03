@@ -112,6 +112,4 @@ class WatchCommand extends Command
 
         return true;
     }
-
-
 }

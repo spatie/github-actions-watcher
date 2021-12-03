@@ -12,8 +12,7 @@ abstract class Command extends LaravelZeroCommand
     public function __construct(
         public ConfigRepository $config,
         public GitHub $gitHub,
-    )
-    {
+    ) {
         parent::__construct();
     }
 

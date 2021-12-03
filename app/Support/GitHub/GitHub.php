@@ -7,10 +7,10 @@ use App\Exceptions\RateLimitExceeded;
 use App\Support\ConfigRepository;
 use App\Support\GitHub\Entities\WorkflowRun;
 use App\Support\GitHub\Entities\WorkflowRunCollection;
-use Illuminate\Http\Client\Response;
-use Illuminate\Support\Collection;
-
 use Illuminate\Http\Client\PendingRequest;
+use Illuminate\Http\Client\Response;
+
+use Illuminate\Support\Collection;
 
 class GitHub
 {
@@ -38,8 +38,8 @@ class GitHub
         $this->ensureSuccessfulRequest($response);
 
         $workFlows = collect($response->json('workflow_runs'))
-            ->map(fn(array $workflowRunProperties) => new WorkflowRun($workflowRunProperties))
-            ->sortBy(fn(WorkflowRun $run) => $run->name);
+            ->map(fn (array $workflowRunProperties) => new WorkflowRun($workflowRunProperties))
+            ->sortBy(fn (WorkflowRun $run) => $run->name);
 
         return new WorkflowRunCollection($workFlows->toArray());
     }
@@ -54,7 +54,7 @@ class GitHub
     {
         return $this
             ->getWorkflowRuns($vendorAndRepo, $branch)
-            ->unique(fn(WorkflowRun $workflowRun) => $workflowRun->name);
+            ->unique(fn (WorkflowRun $workflowRun) => $workflowRun->name);
     }
 
     protected function ensureSuccessfulRequest(Response $response): void
@@ -82,7 +82,7 @@ class GitHub
 
     public function getAccessToken(string $deviceCode): ?string
     {
-        $response =  $this
+        $response = $this
             ->gitHub
             ->post('https://github.com/login/oauth/access_token', [
                 'client_id' => config('services.github.client_id'),
@@ -90,7 +90,7 @@ class GitHub
                 'grant_type' => 'urn:ietf:params:oauth:grant-type:device_code',
             ]);
 
-            return $response->json('access_token');
+        return $response->json('access_token');
     }
 
     /**

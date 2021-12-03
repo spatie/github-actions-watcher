@@ -20,7 +20,7 @@ class LoginCommand extends Command
             return static::FAILURE;
         }
 
-        $verificationData =  $this->gitHub->startUserVerification();
+        $verificationData = $this->gitHub->startUserVerification();
 
         $this
             ->clearScreen()
@@ -35,7 +35,7 @@ class LoginCommand extends Command
 
         do {
             $accessToken = $this->checkResponse($verificationData['device_code']);
-        } while(! $accessToken);
+        } while (! $accessToken);
 
         $gitHubUser = $this->gitHub->getAuthorizedUser($accessToken);
 
@@ -60,6 +60,5 @@ class LoginCommand extends Command
 
     protected function isValidToken(string $token): bool
     {
-
     }
 }

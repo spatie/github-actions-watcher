@@ -2,10 +2,6 @@
 
 namespace App\Commands;
 
-use App\Support\ConfigRepository;
-
-use function Termwind\render;
-
 class LogoutCommand extends Command
 {
     protected $signature = 'logout';
