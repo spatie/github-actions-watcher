@@ -13,7 +13,8 @@ class LocalGitRepo
 {
     public function __construct(
         protected string $directory = __DIR__
-    ) {}
+    ) {
+    }
 
     public function getVendorAndRepo(): string
     {
@@ -34,7 +35,7 @@ class LocalGitRepo
 
         $process->run();
 
-        if (!$process->isSuccessful()) {
+        if (! $process->isSuccessful()) {
             throw NotExecutingInLocalGitRepo::make();
         }
 
@@ -46,9 +47,10 @@ class LocalGitRepo
         $executableFinder = new ExecutableFinder();
         $gitPath = $executableFinder->find('git');
 
-        if (!$gitPath) {
+        if (! $gitPath) {
             throw GitNotFound::make($this->directory);
         }
+
         return $gitPath;
     }
 
@@ -60,7 +62,7 @@ class LocalGitRepo
 
         $process->run();
 
-        if (!$process->isSuccessful()) {
+        if (! $process->isSuccessful()) {
             throw NotExecutingInLocalGitRepo::make();
         }
 

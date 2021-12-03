@@ -15,7 +15,7 @@ class WorkflowRunCollection extends Collection
 
     public function containsActiveRuns(): bool
     {
-        return $this->contains(fn(WorkflowRun $workflowRun) => $workflowRun->didNotComplete());
+        return $this->contains(fn (WorkflowRun $workflowRun) => $workflowRun->didNotComplete());
     }
 
     public function allCompletedSuccessfully(): bool
@@ -24,7 +24,6 @@ class WorkflowRunCollection extends Collection
             return false;
         }
 
-        return ! $this->contains(fn(WorkflowRun $workflowRun) => $workflowRun->conclusion() !== RunConclusion::Success);
-
+        return ! $this->contains(fn (WorkflowRun $workflowRun) => $workflowRun->conclusion() !== RunConclusion::Success);
     }
 }
