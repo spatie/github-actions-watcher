@@ -36,7 +36,7 @@ parameters:
 			path: app/Commands/WatchCommand.php
 
 		-
-			message: "#^Method App\\\\Support\\\\ConfigRepository\\:\\:__get\\(\\) should return string but returns array\\|string\\|null\\.$#"
+			message: "#^Method App\\\\Support\\\\ConfigRepository\\:\\:__get\\(\\) should return string\\|null but returns array\\|string\\|null\\.$#"
 			count: 1
 			path: app/Support/ConfigRepository.php
 
