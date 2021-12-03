@@ -21,10 +21,10 @@ enum RunConclusion: string
     {
         return match($this)
         {
-            self::ActionRequired => 'bg-orange-100',
-            self::Cancelled, self::Skipped => 'bg-grey-100',
-            self::Failure, self::Stale, self::TimedOut => 'bg-red-100',
-            self::Neutral, self::Success => 'bg-green-1OO',
+            self::ActionRequired => 'text-orange-400',
+            self::Cancelled, self::Skipped => 'text-grey-400',
+            self::Failure, self::Stale, self::TimedOut => 'text-red-400',
+            self::Neutral, self::Success => 'text-green-400',
         };
     }
 }

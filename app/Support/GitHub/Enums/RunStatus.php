@@ -16,9 +16,9 @@ enum RunStatus: string
     {
         return match($this)
         {
-            self::Queued => 'bg-grey-100',
-            self::InProgress => 'bg-orange-100',
-            self::Completed => 'bg-red-100',
+            self::Queued => 'text-grey-400',
+            self::InProgress => 'text-orange-400',
+            self::Completed => 'text-red-400',
         };
     }
 }

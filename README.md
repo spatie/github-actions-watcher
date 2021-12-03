@@ -4,16 +4,9 @@
 [![Tests](https://github.com/spatie/github-actions-watcher/actions/workflows/run-tests.yml/badge.svg?branch=main)](https://github.com/spatie/github-actions-watcher/actions/workflows/run-tests.yml)
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/github-actions-watcher.svg?style=flat-square)](https://packagist.org/packages/spatie/github-actions-watcher)
 
----
-This package can be used as to scaffold a framework agnostic package. Follow these steps to get started:
+Using this tool you can monitor the results of all your GitHub Actions. When installed, you can just execute `actions-watcher` to see all results.
 
-1. Press the "Use template" button at the top of this repo to create a new repo with the contents of this skeleton
-2. Run "php ./configure.php" to run a script that will replace all placeholders throughout all the files
-3. Have fun creating your package.
-4. If you need help creating a package, consider picking up our <a href="https://laravelpackage.training">Laravel Package Training</a> video course.
----
-
-This is where your description should go. Try and limit it to a paragraph or two. Consider adding a small example.
+By default, the watcher will use the git repo and branch of the directory it is launched in. It will keep polling and refreshing results until all workflows of your repo have been completed.
 
 ## Support us
 
@@ -23,19 +16,63 @@ We invest a lot of resources into creating [best in class open source packages](
 
 We highly appreciate you sending us a postcard from your hometown, mentioning which of our package(s) you are using. You'll find our address on [our contact page](https://spatie.be/about-us). We publish all received postcards on [our virtual postcard wall](https://spatie.be/open-source/postcards).
 
+## Requirements
+
+This tool requires PHP 8.1
+
 ## Installation
 
-You can install the package via composer:
+You can install the tool via composer:
 
 ```bash
-composer require spatie/github-actions-watcher
+composer global require spatie/github-actions-watcher
 ```
 
 ## Usage
 
-```php
-$skeleton = new Spatie\GithubActionsWatcher();
-echo $skeleton->echoPhrase('Hello, Spatie!');
+You can just execute the tool on your cli.
+
+```bash
+actions-watcher
+```
+
+
+By default, the watcher will use the git repo and branch of the directory it is launched in. It will keep polling and refreshing results until all workflows of your repo have been completed.
+
+## Authenticating with GitHub
+
+To see results of private repos, you must authenticate with GitHub. Even when working with public repos, we highly recommend authenticating, as you'll get higher rate limit when the tools communicates with GitHub.
+
+You can authenticate with GitHub by executing this command:
+
+```bash
+actions-watcher login
+```
+
+After having completed the login flow, a token will be stored on your disk. At no point, Spatie can see any data of your repos or user.
+
+To destroy the token on your hard disk, execute the `logout` command.
+
+```
+actions-watcher logout
+```
+
+## Single pass
+
+If you don't want to poll for new results, but just want to see current results use the `--single-pass` option
+
+```bash
+actions-watcher --single-pass
+```
+
+## Using an alternative repo and/or branch
+
+By default, the watcher will use the git repo and branch of the directory it is launched in. It will keep polling and refreshing results until all workflows of your repo have been completed. 
+
+If you want to use another repo or branch, use the `--repo` and `--branch` flags.
+
+```bash
+actions-watcher --repo=your-organisation/your-repo-name --branch=other-branch
 ```
 
 ## Testing
