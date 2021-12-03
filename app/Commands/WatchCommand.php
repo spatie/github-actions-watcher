@@ -2,7 +2,7 @@
 
 namespace App\Commands;
 
-use App\Support\GitHub\Entities\WorkflowRun;
+use App\Support\GitHub\Entities\WorkflowRunCollection;
 use App\Support\GitHub\GitHub;
 use App\Support\LocalGitRepo;
 use Exception;
@@ -16,13 +16,27 @@ class WatchCommand extends Command
 
     public function handle(): int
     {
+        $this
+            ->clearScreen()
+            ->showHeader();
+
+        render('<div class="mt-2 mx-4">Fetching GitHub workflow runs...</div>');
+
         $vendorAndRepo = $this->getVendorAndRepo();
 
         $branch = $this->getBranch();
 
         do {
-            $hasRunningWorkflows = $this->displayWorkflows($this->gitHub, $vendorAndRepo, $branch);
-        } while ($this->shouldContinueWatching($hasRunningWorkflows));
+            $workflowRuns = $this->displayWorkflows($this->gitHub, $vendorAndRepo, $branch);
+        } while ($this->shouldContinueWatching($workflowRuns));
+
+        if (! $workflowRuns->allCompletedSuccessfully()) {
+            $this->showError('Some workflows did not end successfully!');
+
+            return static::FAILURE;
+        }
+
+        $this->showSuccess('All workflows ended successfully.');
 
         return static::SUCCESS;
     }
@@ -65,23 +79,28 @@ class WatchCommand extends Command
         return $vendorAndRepo;
     }
 
-    protected function displayWorkflows(GitHub $gitHub, string $vendorAndRepo, string $branch): bool
+    protected function displayWorkflows(GitHub $gitHub, string $vendorAndRepo, string $branch): WorkflowRunCollection
     {
         $runs = $gitHub->getLatestWorkflowRuns($vendorAndRepo, $branch);
 
-        $this->clearScreen();
+        $this
+            ->clearScreen()
+            ->showHeader();
 
-        $view = view('runs', compact('runs', 'vendorAndRepo', 'branch'));
+        $view = view('runs', [
+            'runs' => $runs,
+            'vendorAndRepo' => $vendorAndRepo,
+            'branch' => $branch,
+        ]);
+
         render($view);
 
-        $hasRunningWorkflows = $runs->contains(fn(WorkflowRun $workflowRun) => $workflowRun->didNotComplete());
-
-        return ! $hasRunningWorkflows;
+        return $runs;
     }
 
-    private function shouldContinueWatching(bool $hasRunningWorkflows): bool
+    private function shouldContinueWatching(WorkflowRunCollection $workflowRuns): bool
     {
-        if (! $hasRunningWorkflows) {
+        if (! $workflowRuns->containsActiveRuns()) {
             return false;
         }
 
@@ -89,7 +108,7 @@ class WatchCommand extends Command
             return false;
         }
 
-        sleep(5);
+        sleep(8);
 
         return true;
     }

@@ -24,6 +24,17 @@ abstract class Command extends LaravelZeroCommand
         return $this;
     }
 
+    public function showHeader(): self
+    {
+        $view = view('header', [
+            'gitHubUsername' => $this->config->gitHubUsername,
+        ]);
+
+        render($view);
+
+        return $this;
+    }
+
     public function showSuccess(string $message): self
     {
         return $this->showMessage($message, 'bg-green-800');

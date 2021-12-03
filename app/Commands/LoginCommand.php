@@ -2,8 +2,6 @@
 
 namespace App\Commands;
 
-use App\Support\ConfigRepository;
-
 use function Termwind\render;
 
 class LoginCommand extends Command
@@ -14,6 +12,8 @@ class LoginCommand extends Command
 
     public function handle()
     {
+        $this->showHeader();
+
         if ($username = $this->config->gitHubUsername) {
             $this->showError("You are already logged in as {$username}. Run `actions-watcher logout` to logout first.");
 
@@ -43,6 +43,7 @@ class LoginCommand extends Command
 
         $this
             ->clearScreen()
+            ->showHeader()
             ->showSuccess("You have been successfully logged in as {$gitHubUser['login']}");
 
         return static::SUCCESS;

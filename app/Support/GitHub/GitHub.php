@@ -6,6 +6,7 @@ use App\Exceptions\FailedGitHubResponse;
 use App\Exceptions\RateLimitExceeded;
 use App\Support\ConfigRepository;
 use App\Support\GitHub\Entities\WorkflowRun;
+use App\Support\GitHub\Entities\WorkflowRunCollection;
 use Illuminate\Http\Client\Response;
 use Illuminate\Support\Collection;
 
@@ -27,7 +28,7 @@ class GitHub
      *
      * @return Collection<WorkflowRun>
      */
-    public function getWorkflowRuns(string $vendorAndRepo, string $branch): Collection
+    public function getWorkflowRuns(string $vendorAndRepo, string $branch): WorkflowRunCollection
     {
         [$vendor, $repo] = explode('/', $vendorAndRepo);
 
@@ -36,17 +37,20 @@ class GitHub
 
         $this->ensureSuccessfulRequest($response);
 
-        collect($response->json('workflow_runs'))
+        $workFlows = collect($response->json('workflow_runs'))
             ->map(fn(array $workflowRunProperties) => new WorkflowRun($workflowRunProperties))
-            ->orderBy(fn(WorkflowRun $run) => $run->name);
+            ->sortBy(fn(WorkflowRun $run) => $run->name);
+
+        return new WorkflowRunCollection($workFlows->toArray());
     }
 
     /**
      * @param string $vendorAndRepo
+     * @param string $branch
      *
      * @return Collection<WorkflowRun>
      */
-    public function getLatestWorkflowRuns(string $vendorAndRepo, string $branch): Collection
+    public function getLatestWorkflowRuns(string $vendorAndRepo, string $branch): WorkflowRunCollection
     {
         return $this
             ->getWorkflowRuns($vendorAndRepo, $branch)

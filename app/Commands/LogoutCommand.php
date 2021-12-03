@@ -14,6 +14,8 @@ class LogoutCommand extends Command
 
     public function handle()
     {
+        $this->showHeader();
+
         if (! $username = $this->config->gitHubUsername) {
             $this->showError("You were not logged in.");
 
