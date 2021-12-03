@@ -10,8 +10,6 @@ use App\Support\GitHub\Entities\WorkflowRunCollection;
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Http\Client\Response;
 
-use Illuminate\Support\Collection;
-
 class GitHub
 {
     public function __construct(public PendingRequest $gitHub, ConfigRepository $config)
