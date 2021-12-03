@@ -98,6 +98,8 @@ Please review [our security policy](../../security/policy) on how to report secu
 - [Freek Van der Herten](https://github.com/freekmurze)
 - [All Contributors](../../contributors)
 
+A big thank you to [Francisco Madeira](https://github.com/xiCO2k) for helping us with the layout of the screens.
+
 ## License
 
 The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
