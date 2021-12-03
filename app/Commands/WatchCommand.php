@@ -31,7 +31,7 @@ class WatchCommand extends Command
         } while ($this->shouldContinueWatching($workflowRuns));
 
         if (! $workflowRuns->allCompletedSuccessfully()) {
-            $this->showError('Some workflows did not end successfully!');
+            $this->showError('Some workflows failed...');
 
             return static::FAILURE;
         }
