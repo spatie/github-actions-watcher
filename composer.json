@@ -1,6 +1,6 @@
 {
     "name": "spatie/github-actions-watcher",
-    "description": "A CLI tool to see the status of your GitHub Actions workflows in real time",
+    "description": "A CLI tool to see the status of all your GitHub Actions workflows in real time",
     "keywords": [
         "spatie",
         "github-actions-watcher"
