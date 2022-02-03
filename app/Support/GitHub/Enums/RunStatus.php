@@ -3,18 +3,19 @@
 namespace App\Support\GitHub\Enums;
 
 use App\Support\GitHub\Enums\Concerns\HasHumanReadableValue;
+use MyCLabs\Enum\Enum;
 
-enum RunStatus: string
+class RunStatus extends Enum
 {
     use HasHumanReadableValue;
 
-    case Queued = 'queued';
-    case InProgress = 'in_progress';
-    case Completed = 'completed';
+    private const Queued = 'queued';
+    private const InProgress = 'in_progress';
+    private const Completed = 'completed';
 
     public function color(): string
     {
-        return match($this)
+        return match($this->value)
         {
             self::Queued => 'text-gray-400',
             self::InProgress => 'text-orange-400',

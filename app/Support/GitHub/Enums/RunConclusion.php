@@ -3,23 +3,24 @@
 namespace App\Support\GitHub\Enums;
 
 use App\Support\GitHub\Enums\Concerns\HasHumanReadableValue;
+use MyCLabs\Enum\Enum;
 
-enum RunConclusion: string
+class RunConclusion extends Enum
 {
     use HasHumanReadableValue;
 
-    case ActionRequired = 'action_required';
-    case Cancelled = 'cancelled';
-    case Failure = 'failure';
-    case Neutral = 'neutral';
-    case Success = 'success';
-    case Skipped = 'skipped';
-    case Stale = 'stale';
-    case TimedOut = 'timed_out';
+    private const ActionRequired = 'action_required';
+    private const Cancelled = 'cancelled';
+    private const Failure = 'failure';
+    private const Neutral = 'neutral';
+    private const Success = 'success';
+    private const Skipped = 'skipped';
+    private const Stale = 'stale';
+    private const TimedOut = 'timed_out';
 
     public function color(): string
     {
-        return match($this)
+        return match($this->value)
         {
             self::ActionRequired => 'text-orange-400',
             self::Cancelled, self::Skipped => 'text-gray-400',
