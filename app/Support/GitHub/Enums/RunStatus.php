@@ -15,8 +15,7 @@ class RunStatus extends Enum
 
     public function color(): string
     {
-        return match($this->value)
-        {
+        return match ($this->value) {
             self::Queued => 'text-gray-400',
             self::InProgress => 'text-orange-400',
             self::Completed => 'text-red-400',
