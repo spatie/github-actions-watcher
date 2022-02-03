@@ -20,8 +20,7 @@ class RunConclusion extends Enum
 
     public function color(): string
     {
-        return match($this->value)
-        {
+        return match ($this->value) {
             self::ActionRequired => 'text-orange-400',
             self::Cancelled, self::Skipped => 'text-gray-400',
             self::Failure, self::Stale, self::TimedOut => 'text-red-400',
