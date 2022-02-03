@@ -1,10 +1,10 @@
-# A CLI tool to see the status of your GitHub Actions workflows in real time
+# A CLI tool to see the status of all your GitHub Actions workflows in real time
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/github-actions-watcher.svg?style=flat-square)](https://packagist.org/packages/spatie/github-actions-watcher)
 [![Tests](https://github.com/spatie/github-actions-watcher/actions/workflows/run-tests.yml/badge.svg?branch=main)](https://github.com/spatie/github-actions-watcher/actions/workflows/run-tests.yml)
 [![Total Downloads](https://img.shields.io/packagist/dt/spatie/github-actions-watcher.svg?style=flat-square)](https://packagist.org/packages/spatie/github-actions-watcher)
 
-Using this tool you can monitor the results of all your GitHub Actions. When installed, you can just execute `actions-watcher` to see all results.
+The official GitHub CLI allows you to monitor a single workflow on the terminal. Using our GitHub Actions Watcher tool you can monitor the results of all your GitHub Actions. When installed, you can just execute `actions-watcher` to see all results.
 
 By default, the watcher will use the git repo and branch of the directory it is launched in. It will keep polling and refreshing results until all workflows of your repo have been completed.
 
