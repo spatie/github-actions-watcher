@@ -24,6 +24,6 @@ class WorkflowRunCollection extends Collection
             return false;
         }
 
-        return ! $this->contains(fn (WorkflowRun $workflowRun) => ! $workflowRun->conclusion()->getValue() === RunConclusion::Success);
+        return ! $this->contains(fn (WorkflowRun $workflowRun) => ! ($workflowRun->conclusion()->getValue() === RunConclusion::Success));
     }
 }

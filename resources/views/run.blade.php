@@ -1,5 +1,5 @@
 <div>
-    <span class="w-10 mr-1">
+    <span class="w-10 mr-11">
         <span class="{{ $run->getListStatus()->color() }} font-bold uppercase">{{ $run->getListStatus()->humanReadableValue() }} </span>
         <span class="ml-1">........</span>
     </span>

@@ -40,23 +40,3 @@ parameters:
 			count: 1
 			path: app/Support/ConfigRepository.php
 
-		-
-			message: "#^Access to undefined constant App\\\\Support\\\\GitHub\\\\Enums\\\\RunStatus\\:\\:Completed\\.$#"
-			count: 2
-			path: app/Support/GitHub/Entities/WorkflowRun.php
-
-		-
-			message: "#^Call to an undefined static method App\\\\Support\\\\GitHub\\\\Enums\\\\RunConclusion\\:\\:from\\(\\)\\.$#"
-			count: 1
-			path: app/Support/GitHub/Entities/WorkflowRun.php
-
-		-
-			message: "#^Call to an undefined static method App\\\\Support\\\\GitHub\\\\Enums\\\\RunStatus\\:\\:from\\(\\)\\.$#"
-			count: 1
-			path: app/Support/GitHub/Entities/WorkflowRun.php
-
-		-
-			message: "#^Access to undefined constant App\\\\Support\\\\GitHub\\\\Enums\\\\RunConclusion\\:\\:Success\\.$#"
-			count: 1
-			path: app/Support/GitHub/Entities/WorkflowRunCollection.php
-
