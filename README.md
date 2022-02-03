@@ -1,4 +1,4 @@
-# A CLI tool to see the status of your GitHub Actions workflows in real time
+# A CLI tool to see the status of all your GitHub Actions workflows in real time
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/github-actions-watcher.svg?style=flat-square)](https://packagist.org/packages/spatie/github-actions-watcher)
 [![Tests](https://github.com/spatie/github-actions-watcher/actions/workflows/run-tests.yml/badge.svg?branch=main)](https://github.com/spatie/github-actions-watcher/actions/workflows/run-tests.yml)
