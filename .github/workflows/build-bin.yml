@@ -1,7 +1,5 @@
 name: Build binary
 
-on: [push]
-
 jobs:
   build-binary:
     runs-on: ubuntu-latest
@@ -18,7 +16,6 @@ jobs:
           php-version: 8.0
           extensions: dom, curl, libxml, mbstring, zip, pcntl, pdo, sqlite, pdo_sqlite, bcmath, soap, intl, gd, exif, iconv, imagick, fileinfo
           coverage: none
-
 
       - name: Install dependencies
         run: composer update --${{ matrix.stability }} --prefer-dist --no-interaction
