@@ -15,7 +15,7 @@ jobs:
       - name: Install dependencies
         run: composer update --${{ matrix.stability }} --prefer-dist --no-interaction
 
-      - name: Execute tests
+      - name: Build binary
         run: php actions-watcher app:build actions-watcher
 
       - name: Commit changes
