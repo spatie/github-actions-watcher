@@ -1,5 +1,7 @@
 name: Build binary
 
+on: [push]
+
 jobs:
   build-binary:
     runs-on: ubuntu-latest
