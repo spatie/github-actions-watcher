@@ -1,6 +1,6 @@
 <div class="mx-4 mt-1">
     <div>
-        Workflow runs for {{ $vendorAndRepo }} on the {{ $branch }} branch.
+        Workflow runs for <a href="https://github.com/{{ $vendorAndRepo }}">{{ $vendorAndRepo }}</a> on the {{ $branch }} branch.
     </div>
 
     @if ($runs->isEmpty())
