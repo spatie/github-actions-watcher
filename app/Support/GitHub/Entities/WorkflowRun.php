@@ -38,14 +38,14 @@ class WorkflowRun
 
     public function getListStatus(): RunStatus|RunConclusion
     {
-        return $this->status() === RunStatus::Completed
+        return $this->status()->getValue() === RunStatus::Completed
             ? $this->conclusion()
             : $this->status();
     }
 
     public function didComplete(): bool
     {
-        return $this->status() === RunStatus::Completed;
+        return $this->status()->getValue() === RunStatus::Completed;
     }
 
     public function didNotComplete(): bool

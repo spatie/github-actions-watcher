@@ -9,9 +9,9 @@ class RunStatus extends Enum
 {
     use HasHumanReadableValue;
 
-    private const Queued = 'queued';
-    private const InProgress = 'in_progress';
-    private const Completed = 'completed';
+    public const Queued = 'queued';
+    public const InProgress = 'in_progress';
+    public const Completed = 'completed';
 
     public function color(): string
     {

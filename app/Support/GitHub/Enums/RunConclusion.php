@@ -9,14 +9,14 @@ class RunConclusion extends Enum
 {
     use HasHumanReadableValue;
 
-    private const ActionRequired = 'action_required';
-    private const Cancelled = 'cancelled';
-    private const Failure = 'failure';
-    private const Neutral = 'neutral';
-    private const Success = 'success';
-    private const Skipped = 'skipped';
-    private const Stale = 'stale';
-    private const TimedOut = 'timed_out';
+    public const ActionRequired = 'action_required';
+    public const Cancelled = 'cancelled';
+    public const Failure = 'failure';
+    public const Neutral = 'neutral';
+    public const Success = 'success';
+    public const Skipped = 'skipped';
+    public const Stale = 'stale';
+    public const TimedOut = 'timed_out';
 
     public function color(): string
     {
