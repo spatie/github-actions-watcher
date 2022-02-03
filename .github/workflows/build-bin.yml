@@ -16,7 +16,8 @@ jobs:
         run: composer update --${{ matrix.stability }} --prefer-dist --no-interaction
 
       - name: Build binary
-        run: php actions-watcher app:build actions-watcher
+        run: ./vendor/laravel-zero/framework/bin/box compile --working-dir=./ --config=./box.json
+
 
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@v4
