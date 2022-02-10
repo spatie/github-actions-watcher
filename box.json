@@ -10,6 +10,7 @@
     "files": [
         "composer.json"
     ],
+    "output": "builds/actions-watcher.phar",
     "exclude-composer-files": false,
     "exclude-dev-files": false,
     "compression": "GZ",
