@@ -14,7 +14,7 @@ class ConfigRepository
 
     public function __construct()
     {
-        $path = storage_path('app/config.json');
+        $path = "{$this->findHomeDirectory()}/.actions-watcher.json}";
 
         $this->valuestore = Valuestore::make($path);
     }
@@ -43,5 +43,24 @@ class ConfigRepository
         $this->valuestore->flush();
 
         return $this;
+    }
+
+    protected function findHomeDirectory(): ?string
+    {
+        if (str_starts_with(PHP_OS, 'WIN')) {
+            if (empty($_SERVER['HOMEDRIVE']) || empty($_SERVER['HOMEPATH'])) {
+                return null;
+            }
+
+            $homeDirectory = $_SERVER['HOMEDRIVE'] . $_SERVER['HOMEPATH'];
+
+            return rtrim($homeDirectory, DIRECTORY_SEPARATOR);
+        }
+
+        if ($homeDirectory = getenv('HOME')) {
+            return rtrim($homeDirectory, DIRECTORY_SEPARATOR);
+        }
+
+        return null;
     }
 }
