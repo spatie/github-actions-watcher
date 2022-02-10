@@ -8,6 +8,8 @@ The official GitHub CLI allows you to monitor a single workflow on the terminal.
 
 By default, the watcher will use the git repo and branch of the directory it is launched in. It will keep polling and refreshing results until all workflows of your repo have been completed.
 
+![screenshot](https://spatie.github.io/github-actions-watcher/tool.png)
+
 ## Support us
 
 [<img src="https://github-ads.s3.eu-central-1.amazonaws.com/github-actions-watcher.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/github-actions-watcher)
