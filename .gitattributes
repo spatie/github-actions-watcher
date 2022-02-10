@@ -9,4 +9,5 @@
 /.editorconfig      export-ignore
 /.php_cs            export-ignore
 /.github            export-ignore
+/docs               export-ignore
 
