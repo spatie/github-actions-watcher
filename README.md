@@ -96,7 +96,7 @@ Please review [our security policy](../../security/policy) on how to report secu
 - [Freek Van der Herten](https://github.com/freekmurze)
 - [All Contributors](../../contributors)
 
-A big thank you to [Francisco Madeira](https://github.com/xiCO2k) for helping us with the layout of the screens.
+A big thank you to [Francisco Madeira](https://github.com/xiCO2k) and [Owen Voke](https://github.com/owenvoke) for helping us with the layout of the screens.
 
 ## License
 
