@@ -2,6 +2,10 @@
 
 All notable changes to `github-actions-watcher` will be documented in this file.
 
+## 0.0.4 - 2022-02-10
+
+- fix directory
+
 ## 0.0.3 - 2022-02-10
 
 - experimental release
