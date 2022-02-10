@@ -44,7 +44,7 @@
     },
     "scripts": {
         "analyse": "vendor/bin/phpstan analyse",
-        "build": "./vendor/laravel-zero/framework/bin/box build",
+        "build": "php actions-watcher app:build actions-watcher",
         "test": "vendor/bin/pest",
         "test-coverage": "vendor/bin/pest --coverage"
     },
