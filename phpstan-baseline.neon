@@ -40,3 +40,18 @@ parameters:
 			count: 1
 			path: app/Support/ConfigRepository.php
 
+		-
+			message: "#^Parameter \\#1 \\$key of method Illuminate\\\\Support\\\\Collection\\<\\(int\\|string\\),mixed\\>\\:\\:unique\\(\\) expects \\(callable\\(mixed, \\(int\\|string\\)\\)\\: bool\\)\\|string\\|null, Closure\\(App\\\\Support\\\\GitHub\\\\Entities\\\\WorkflowRun\\)\\: string given\\.$#"
+			count: 1
+			path: app/Support/GitHub/GitHub.php
+
+		-
+			message: "#^Unable to resolve the template type TKey in call to function collect$#"
+			count: 1
+			path: app/Support/GitHub/GitHub.php
+
+		-
+			message: "#^Unable to resolve the template type TValue in call to function collect$#"
+			count: 1
+			path: app/Support/GitHub/GitHub.php
+

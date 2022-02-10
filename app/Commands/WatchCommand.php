@@ -47,7 +47,7 @@ class WatchCommand extends Command
             return (string)$vendorAndRepo;
         }
 
-        $localGitRepo = new LocalGitRepo(getcwd());
+        $localGitRepo = new LocalGitRepo($this->getCurrentDirectory());
 
         try {
             $vendorAndRepo = $localGitRepo->getVendorAndRepo();
@@ -66,7 +66,7 @@ class WatchCommand extends Command
             return (string)$branch;
         }
 
-        $localGitRepo = new LocalGitRepo(getcwd());
+        $localGitRepo = new LocalGitRepo($this->getCurrentDirectory());
 
         try {
             $vendorAndRepo = $localGitRepo->getCurrentBranch();
@@ -111,5 +111,10 @@ class WatchCommand extends Command
         sleep(8);
 
         return true;
+    }
+
+    protected function getCurrentDirectory(): string
+    {
+        return (string)getcwd();
     }
 }

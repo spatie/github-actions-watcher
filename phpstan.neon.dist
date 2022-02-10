@@ -10,4 +10,5 @@ parameters:
         - app/Support/GitHub/Enums
     tmpDir: build/phpstan
     checkMissingIterableValueType: true
+    checkGenericClassInNonGenericObjectType: false
 
