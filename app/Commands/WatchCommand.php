@@ -47,7 +47,7 @@ class WatchCommand extends Command
             return (string)$vendorAndRepo;
         }
 
-        $localGitRepo = new LocalGitRepo(base_path());
+        $localGitRepo = new LocalGitRepo(getcwd());
 
         try {
             $vendorAndRepo = $localGitRepo->getVendorAndRepo();
@@ -66,7 +66,7 @@ class WatchCommand extends Command
             return (string)$branch;
         }
 
-        $localGitRepo = new LocalGitRepo(base_path());
+        $localGitRepo = new LocalGitRepo(getcwd());
 
         try {
             $vendorAndRepo = $localGitRepo->getCurrentBranch();
