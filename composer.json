@@ -19,7 +19,6 @@
         "guzzlehttp/guzzle": "^7.4",
         "illuminate/http": "^9.0",
         "illuminate/view": "^9.0",
-        "laravel-zero/framework": "^9.0",
         "myclabs/php-enum": "^1.8",
         "nunomaduro/larastan": "^1.0.2",
         "nunomaduro/termwind": "^1.0",
@@ -27,6 +26,7 @@
         "symfony/process": "^6.0"
     },
     "require-dev": {
+        "laravel-zero/framework": "^9.0",
         "mockery/mockery": "^1.5.0",
         "pestphp/pest": "^1.21",
         "spatie/ray": "^1.32"
@@ -43,6 +43,7 @@
     },
     "scripts": {
         "analyse": "vendor/bin/phpstan analyse",
+        "build": "./vendor/laravel-zero/framework/bin/box build",
         "test": "vendor/bin/pest",
         "test-coverage": "vendor/bin/pest --coverage"
     },
@@ -57,5 +58,5 @@
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
-    "bin": ["actions-watcher"]
+    "bin": ["actions-watcher.phar"]
 }
