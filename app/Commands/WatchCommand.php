@@ -36,7 +36,7 @@ class WatchCommand extends Command
             return static::FAILURE;
         }
 
-        $this->showSuccess('All workflows ended successfully.');
+        $this->showSuccess('All workflows finished successfully.');
 
         return static::SUCCESS;
     }
