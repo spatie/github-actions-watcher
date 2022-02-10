@@ -2,6 +2,10 @@
 
 All notable changes to `github-actions-watcher` will be documented in this file.
 
+## 0.0.6 - 2022-02-10
+
+- phar test 2
+
 ## 0.0.5 - 2022-02-10
 
 - phar test
