@@ -31,7 +31,7 @@ class LocalGitRepo
 
         $command = "{$gitPath} rev-parse --abbrev-ref HEAD";
 
-        $process = PRocess::fromShellCommandline($command, $this->directory);
+        $process = Process::fromShellCommandline($command, $this->directory);
 
         $process->run();
 
