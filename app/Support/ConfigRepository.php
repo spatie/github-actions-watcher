@@ -14,7 +14,7 @@ class ConfigRepository
 
     public function __construct()
     {
-        $path = "{$this->findHomeDirectory()}/.actions-watcher.json}";
+        $path = "{$this->findHomeDirectory()}/.actions-watcher.json";
 
         $this->valuestore = Valuestore::make($path);
     }
