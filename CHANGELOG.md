@@ -2,6 +2,18 @@
 
 All notable changes to `github-actions-watcher` will be documented in this file.
 
+## 0.13.0 - 2022-02-13
+
+## What's Changed
+
+- Fix config file name by @pelmered in https://github.com/spatie/github-actions-watcher/pull/2
+
+## New Contributors
+
+- @pelmered made their first contribution in https://github.com/spatie/github-actions-watcher/pull/2
+
+**Full Changelog**: https://github.com/spatie/github-actions-watcher/compare/0.11.0...0.13.0
+
 ## 0.0.8 - 2022-02-10
 
 - phar test
