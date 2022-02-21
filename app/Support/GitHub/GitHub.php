@@ -34,7 +34,7 @@ class GitHub
         $response = $this->gitHub
             ->get("/api.github.com/repos/{$vendor}/{$repo}/actions/runs", ['branch' => $branch]);
 
-        $this->ensureSuccessfulRequest($response);
+        $this->ensureSuccessfulRequest($response, $vendorAndRepo, $branch);
 
         $workFlows = collect($response->json('workflow_runs'))
             ->map(fn (array $workflowRunProperties) => new WorkflowRun($workflowRunProperties))
@@ -56,7 +56,7 @@ class GitHub
             ->unique(fn (WorkflowRun $workflowRun) => $workflowRun->name);
     }
 
-    protected function ensureSuccessfulRequest(Response $response): void
+    protected function ensureSuccessfulRequest(Response $response, string $vendorAndRepo, string $branch): void
     {
         if ($response->successful()) {
             return;
@@ -67,7 +67,7 @@ class GitHub
             throw RateLimitExceeded::make($response);
         }
 
-        throw FailedGitHubResponse::make($response);
+        throw FailedGitHubResponse::make($response, $vendorAndRepo, $branch);
     }
 
     /** @return array{verification_uri: string, device_code: string, user_code: string} */
