@@ -17,9 +17,7 @@ class GitHub
         $this->gitHub->acceptJson();
 
         if ($accessToken = $config->accessToken) {
-            $this->gitHub->withHeaders([
-                'access_token' => $accessToken,
-            ]);
+            $this->gitHub->withToken($config->accessToken, 'token');
         }
     }
 
