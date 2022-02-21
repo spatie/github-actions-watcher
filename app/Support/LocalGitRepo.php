@@ -81,6 +81,12 @@ class LocalGitRepo
             return $vendorAndRepo;
         }
 
+        if (str_contains($gitHubRemoteUrl, '@github.com')) {
+            $vendorAndRepo = Str::after($vendorAndRepo, '@github.com');
+
+            return Str::beforeLast($vendorAndRepo, '.git');
+        }
+
         throw NotAGitHubRemoteUrl::make($gitHubRemoteUrl);
     }
 }
