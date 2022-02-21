@@ -2,6 +2,10 @@
 
 All notable changes to `github-actions-watcher` will be documented in this file.
 
+## 1.0.6 - 2022-02-21
+
+- fix accessing private repos
+
 ## 1.0.0 - 2022-02-21
 
 - initial release
