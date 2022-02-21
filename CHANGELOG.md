@@ -2,6 +2,10 @@
 
 All notable changes to `github-actions-watcher` will be documented in this file.
 
+## 1.0.0 - 2022-02-21
+
+- initial release
+
 ## 0.13.0 - 2022-02-13
 
 ## What's Changed
