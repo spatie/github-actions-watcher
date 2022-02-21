@@ -16,7 +16,7 @@ class GitHub
     {
         $this->gitHub->acceptJson();
 
-        if ($accessToken = $config->accessToken) {
+        if ($config->accessToken) {
             $this->gitHub->withToken($config->accessToken, 'token');
         }
     }
@@ -32,7 +32,7 @@ class GitHub
         [$vendor, $repo] = explode('/', $vendorAndRepo);
 
         $response = $this->gitHub
-            ->get("/api.github.com/repos/{$vendor}/{$repo}/actions/runs", ['branch' => $branch]);
+            ->get("https://api.github.com/repos/{$vendor}/{$repo}/actions/runs", ['branch' => $branch]);
 
         $this->ensureSuccessfulRequest($response, $vendorAndRepo, $branch);
 
