@@ -39,7 +39,8 @@ class LoginCommand extends Command
 
         $gitHubUser = $this->gitHub->getAuthorizedUser($accessToken);
 
-        $this->config
+        $this
+            ->config
             ->setAccessToken($accessToken)
             ->setGitHubUsername($gitHubUser['login']);
 
