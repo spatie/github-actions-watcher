@@ -77,12 +77,16 @@ class LocalGitRepo
             }
         }
 
-        if ($vendorAndRepo = Str::between($gitHubRemoteUrl, '@github.com:', '.git')) {
-            return $vendorAndRepo;
+        if (str_contains($gitHubRemoteUrl, '@github.com:')) {
+            if ($vendorAndRepo = Str::between($gitHubRemoteUrl, '@github.com:', '.git')) {
+                return $vendorAndRepo;
+            }
         }
 
-        if ($vendorAndRepo = Str::between($gitHubRemoteUrl, '@github.com/', '.git')) {
-            return $vendorAndRepo;
+        if (str_contains($gitHubRemoteUrl, '@github.com/')) {
+            if ($vendorAndRepo = Str::between($gitHubRemoteUrl, '@github.com/', '.git')) {
+                return $vendorAndRepo;
+            }
         }
 
         throw NotAGitHubRemoteUrl::make($gitHubRemoteUrl);
