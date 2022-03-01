@@ -10,13 +10,14 @@ class RunStatus extends Enum
     use HasHumanReadableValue;
 
     public const Queued = 'queued';
+    public const Pending = 'pending';
     public const InProgress = 'in_progress';
     public const Completed = 'completed';
 
     public function color(): string
     {
         return match ($this->value) {
-            self::Queued => 'text-gray-400',
+            self::Queued, self::Pending => 'text-gray-400',
             self::InProgress => 'text-orange-400',
             self::Completed => 'text-red-400',
         };
