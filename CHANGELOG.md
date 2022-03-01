@@ -2,6 +2,10 @@
 
 All notable changes to `github-actions-watcher` will be documented in this file.
 
+## 1.0.7 - 2022-03-01
+
+- add support for run status pending
+
 ## 1.0.6 - 2022-02-21
 
 - fix accessing private repos
