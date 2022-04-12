@@ -1,3 +1,6 @@
+
+[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/support-ukraine.svg?t=1" />](https://supportukrainenow.org)
+
 # A CLI tool to see the status of all your GitHub Actions workflows in real time
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/spatie/github-actions-watcher.svg?style=flat-square)](https://packagist.org/packages/spatie/github-actions-watcher)
@@ -89,7 +92,7 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 
 ## Contributing
 
-Please see [CONTRIBUTING](.github/CONTRIBUTING.md) for details.
+Please see [CONTRIBUTING](https://github.com/spatie/.github/blob/main/CONTRIBUTING.md) for details.
 
 ## Security Vulnerabilities
 
