@@ -72,7 +72,13 @@ class LocalGitRepo
     protected function extractVendorAndRepo(string $gitHubRemoteUrl): string
     {
         if (Str::startsWith($gitHubRemoteUrl, 'https://github.com/')) {
-            if ($vendorAndRepo = Str::after($gitHubRemoteUrl, 'https://github.com/')) {
+            if ($vendorAndRepo = Str::between($gitHubRemoteUrl, 'https://github.com/', '.git')) {
+                return $vendorAndRepo;
+            }
+        }
+
+        if (str_contains($gitHubRemoteUrl, '@github.com:/')) {
+            if ($vendorAndRepo = Str::between($gitHubRemoteUrl, '@github.com:/', '.git')) {
                 return $vendorAndRepo;
             }
         }
