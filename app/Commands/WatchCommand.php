@@ -6,6 +6,7 @@ use App\Support\GitHub\Entities\WorkflowRunCollection;
 use App\Support\GitHub\GitHub;
 use App\Support\LocalGitRepo;
 use Exception;
+
 use function Termwind\render;
 
 class WatchCommand extends Command

@@ -5,6 +5,7 @@ namespace App\Commands;
 use App\Support\ConfigRepository;
 use App\Support\GitHub\GitHub;
 use LaravelZero\Framework\Commands\Command as LaravelZeroCommand;
+
 use function Termwind\render;
 
 abstract class Command extends LaravelZeroCommand
