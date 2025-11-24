@@ -2,6 +2,25 @@
 
 All notable changes to `github-actions-watcher` will be documented in this file.
 
+## 1.0.9 - 2025-11-24
+
+### What's Changed
+
+* Bump dependabot/fetch-metadata from 2.1.0 to 2.2.0 by @dependabot[bot] in https://github.com/spatie/github-actions-watcher/pull/27
+* Bump dependabot/fetch-metadata from 2.2.0 to 2.3.0 by @dependabot[bot] in https://github.com/spatie/github-actions-watcher/pull/28
+* Bump dependabot/fetch-metadata from 2.3.0 to 2.4.0 by @dependabot[bot] in https://github.com/spatie/github-actions-watcher/pull/29
+* Update issue template by @AlexVanderbist in https://github.com/spatie/github-actions-watcher/pull/32
+* Added Symfony 8 support to all symfony/* packages. by @thecaliskan in https://github.com/spatie/github-actions-watcher/pull/35
+* Bump stefanzweifel/git-auto-commit-action from 4 to 7 by @dependabot[bot] in https://github.com/spatie/github-actions-watcher/pull/33
+* Bump actions/checkout from 2 to 6 by @dependabot[bot] in https://github.com/spatie/github-actions-watcher/pull/36
+
+### New Contributors
+
+* @AlexVanderbist made their first contribution in https://github.com/spatie/github-actions-watcher/pull/32
+* @thecaliskan made their first contribution in https://github.com/spatie/github-actions-watcher/pull/35
+
+**Full Changelog**: https://github.com/spatie/github-actions-watcher/compare/1.0.8...1.0.9
+
 ## 1.0.8 - 2024-06-27
 
 ### What's Changed
