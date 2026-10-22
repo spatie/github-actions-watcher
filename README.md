@@ -12,7 +12,7 @@ By default, the watcher will use the git repo and branch of the directory it is 
 
 ## Support us
 
-[<img src="https://github-ads.s3.eu-central-1.amazonaws.com/github-actions-watcher.jpg?t=1" width="419px" />](https://spatie.be/github-ad-click/github-actions-watcher)
+[<img src="https://spatie.be/github-ad-image/github-actions-watcher.jpg" width="419px" />](https://spatie.be/github-ad-click/github-actions-watcher)
 
 We invest a lot of resources into creating [best in class open source packages](https://spatie.be/open-source). You can support us by [buying one of our paid products](https://spatie.be/open-source/support-us).
 
